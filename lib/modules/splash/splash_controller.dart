@@ -1,5 +1,5 @@
-import 'package:flutter_getx_boilerplate/routes/routes.dart';
-import 'package:flutter_getx_boilerplate/shared/shared.dart';
+import 'package:ioaon_mobile_v2/routes/routes.dart';
+import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

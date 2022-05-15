@@ -1,4 +1,4 @@
-import 'package:flutter_getx_boilerplate/api/api.dart';
+import 'package:ioaon_mobile_v2/api/api.dart';
 import 'package:get/get.dart';
 
 class AppBinding extends Bindings {

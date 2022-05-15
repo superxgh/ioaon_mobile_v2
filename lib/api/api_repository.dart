@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter_getx_boilerplate/models/models.dart';
-import 'package:flutter_getx_boilerplate/models/response/users_response.dart';
+import 'package:ioaon_mobile_v2/models/models.dart';
+import 'package:ioaon_mobile_v2/models/response/users_response.dart';
 
 import 'api.dart';
 

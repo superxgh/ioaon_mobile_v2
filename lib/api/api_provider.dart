@@ -1,5 +1,5 @@
-import 'package:flutter_getx_boilerplate/api/base_provider.dart';
-import 'package:flutter_getx_boilerplate/models/models.dart';
+import 'package:ioaon_mobile_v2/api/base_provider.dart';
+import 'package:ioaon_mobile_v2/models/models.dart';
 import 'package:get/get.dart';
 
 class ApiProvider extends BaseProvider {

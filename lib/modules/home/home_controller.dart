@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:flutter_getx_boilerplate/api/api.dart';
-import 'package:flutter_getx_boilerplate/models/response/users_response.dart';
-import 'package:flutter_getx_boilerplate/modules/home/home.dart';
-import 'package:flutter_getx_boilerplate/shared/shared.dart';
+import 'package:ioaon_mobile_v2/api/api.dart';
+import 'package:ioaon_mobile_v2/models/response/users_response.dart';
+import 'package:ioaon_mobile_v2/modules/home/home.dart';
+import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

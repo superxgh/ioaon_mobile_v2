@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_boilerplate/api/api.dart';
-import 'package:flutter_getx_boilerplate/models/models.dart';
-import 'package:flutter_getx_boilerplate/routes/app_pages.dart';
-import 'package:flutter_getx_boilerplate/shared/shared.dart';
+import 'package:ioaon_mobile_v2/api/api.dart';
+import 'package:ioaon_mobile_v2/models/models.dart';
+import 'package:ioaon_mobile_v2/routes/app_pages.dart';
+import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
