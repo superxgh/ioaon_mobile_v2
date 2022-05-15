@@ -86,9 +86,17 @@ class AuthController extends GetxController {
         Get.toNamed(Routes.HOME);
 
       }
+
+
     }
+
+    resetDataOnTestController();
   }
 
+  void resetDataOnTestController() {
+    loginEmailController.text = '';
+    loginPasswordController.text = '';
+  }
   @override
   void onClose() {
     log.w('onClose()');

@@ -74,6 +74,7 @@ class HomeController extends GetxController {
     log.w('signout()');
     PreferenceService.clear();
 
+    // Get.offAndToNamed(Routes.SPLASH);
     // Get.back();
     NavigatorHelper.popLastScreens(popCount: 2);
   }
