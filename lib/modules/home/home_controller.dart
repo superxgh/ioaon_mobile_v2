@@ -5,15 +5,19 @@ import 'package:ioaon_mobile_v2/models/response/users_response.dart';
 import 'package:ioaon_mobile_v2/modules/home/home.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
+import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
+  final log = logger(HomeController);
+
   final ApiRepository apiRepository;
   HomeController({required this.apiRepository});
 
   var currentTab = MainTabs.home.obs;
   var users = Rxn<UsersResponse>();
-  var user = Rxn<Datum>();
+  // var user = Rxn<Datum>();
+  var user = {};
 
   late MainTab mainTab;
   late DiscoverTab discoverTab;
@@ -24,18 +28,34 @@ class HomeController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-
+    log.w('onInit()');
+    loadUserByToken();
     mainTab = MainTab();
-    loadUsers();
-
     discoverTab = DiscoverTab();
     resourceTab = ResourceTab();
     inboxTab = InboxTab();
     meTab = MeTab();
   }
 
+  Future<void> loadUserByToken() async {
+    log.w('loadUserByToken()');
+    var prefs = Get.find<SharedPreferences>();
+    String authToken = prefs.getString(StorageConstants.authToken) ?? '';
+    log.w('authToken = $authToken');
+    // var _users = await apiRepository.getUsers();
+    // log.w('_users = $_users');
+    // if (_users != null) {
+    //   users.value = _users;
+    //   _saveUserInfo(_users);
+    // } else {
+    //   // Goto login
+    // }
+  }
+
   Future<void> loadUsers() async {
+    log.w('loadUsers()');
     var _users = await apiRepository.getUsers();
+    log.w('_users = $_users');
     if (_users!.data!.length > 0) {
       users.value = _users;
       users.refresh();
@@ -44,6 +64,7 @@ class HomeController extends GetxController {
   }
 
   void signout() {
+    log.w('signout()');
     var prefs = Get.find<SharedPreferences>();
     prefs.clear();
 
@@ -52,11 +73,12 @@ class HomeController extends GetxController {
   }
 
   void _saveUserInfo(UsersResponse users) {
-    var random = new Random();
-    var index = random.nextInt(users.data!.length);
-    user.value = users.data![index];
-    var prefs = Get.find<SharedPreferences>();
-    prefs.setString(StorageConstants.userInfo, users.data![index].toRawJson());
+    log.w('_saveUserInfo(UsersResponse users)');
+    // var random = new Random();
+    // var index = random.nextInt(users.data!.length);
+    // user.value = users.data![index];
+    // var prefs = Get.find<SharedPreferences>();
+    // prefs.setString(StorageConstants.userInfo, users.data![index].toRawJson());
 
     // var userInfo = prefs.getString(StorageConstants.userInfo);
     // var userInfoObj = Datum.fromRawJson(xx!);
@@ -64,11 +86,14 @@ class HomeController extends GetxController {
   }
 
   void switchTab(index) {
+    log.w('switchTab(index)');
     var tab = _getCurrentTab(index);
     currentTab.value = tab;
   }
 
   int getCurrentIndex(MainTabs tab) {
+    log.w('getCurrentIndex(MainTabs tab)');
+    log.w('tab = $tab');
     switch (tab) {
       case MainTabs.home:
         return 0;
@@ -86,6 +111,7 @@ class HomeController extends GetxController {
   }
 
   MainTabs _getCurrentTab(int index) {
+    log.w('_getCurrentTab(int index)');
     switch (index) {
       case 0:
         return MainTabs.home;

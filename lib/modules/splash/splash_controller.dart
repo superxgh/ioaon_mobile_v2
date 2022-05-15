@@ -14,8 +14,8 @@ class SplashController extends GetxController {
     await Future.delayed(Duration(milliseconds: 2000));
     var storage = Get.find<SharedPreferences>();
     try {
-      if (storage.getString(StorageConstants.token) != null) {
-        log.w('storage.getString(StorageConstants.token) = ${storage.getString(StorageConstants.token)}');
+      if (storage.getString(StorageConstants.authToken) != null) {
+        log.w('storage.getString(StorageConstants.token) = ${storage.getString(StorageConstants.authToken)}');
         log.w('goto Routes.HONE');
         Get.toNamed(Routes.HOME);
       } else {

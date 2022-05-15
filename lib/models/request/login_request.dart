@@ -23,4 +23,5 @@ class LoginRequest {
         "email": email,
         "password": password,
       };
+
 }

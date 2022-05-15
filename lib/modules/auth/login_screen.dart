@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
+import 'package:ioaon_mobile_v2/shared/utils/validator.dart';
 
 import 'auth_controller.dart';
 
@@ -44,15 +45,7 @@ class LoginScreen extends StatelessWidget {
               keyboardType: TextInputType.text,
               labelText: 'email'.tr,
               placeholder: 'enter_email'.tr,
-              validator: (value) {
-                if (!Regex.isEmail(value!)) {
-                  return 'error_email_format'.tr;
-                }
-                if (value.isEmpty) {
-                  return 'error_email_format'.tr;
-                }
-                return null;
-              },
+              validator: validateEmail,
             ),
             CommonWidget.rowHeight(),
             InputField(
@@ -61,17 +54,7 @@ class LoginScreen extends StatelessWidget {
               labelText: 'password'.tr,
               placeholder: 'enter_password'.tr,
               password: true,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'please_input_password'.tr;
-                }
-
-                if (value.length < 6 || value.length > 15) {
-                  return 'password_6_15'.tr;
-                }
-
-                return null;
-              },
+              validator: validatePassword,
             ),
             CommonWidget.rowHeight(height: 80),
             BorderButton(

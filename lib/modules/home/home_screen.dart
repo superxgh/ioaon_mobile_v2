@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/modules/home/home.dart';
-import 'package:ioaon_mobile_v2/modules/home/tabs/tabs.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
 class HomeScreen extends GetView<HomeController> {
+
+  final log = logger(HomeScreen);
+
   @override
   Widget build(BuildContext context) {
+    log.i('build(BuildContext context)');
+
     return WillPopScope(
       onWillPop: () async => false,
       child: Obx(() => _buildWidget()),
@@ -16,6 +20,7 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Widget _buildWidget() {
+    log.i('_buildWidget()');
     return Scaffold(
       body: Center(
         child: _buildContent(controller.currentTab.value),
@@ -65,6 +70,7 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Widget _buildContent(MainTabs tab) {
+    log.i('_buildContent(MainTabs tab)');
     switch (tab) {
       case MainTabs.home:
         return controller.mainTab;
@@ -82,6 +88,9 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   BottomNavigationBarItem _buildNavigationBarItem(String label, String svg) {
+    log.i('_buildNavigationBarItem(String label, String svg)');
+    log.i('label = $label');
+    log.i('svg = $svg');
     return BottomNavigationBarItem(
       icon: SvgPicture.asset('assets/svgs/$svg'),
       label: label,

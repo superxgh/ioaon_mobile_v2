@@ -53,8 +53,8 @@ class AuthController extends GetxController {
       );
 
       final prefs = Get.find<SharedPreferences>();
-      if (res!.token.isNotEmpty) {
-        prefs.setString(StorageConstants.token, res.token);
+      if (res!.authToken.isNotEmpty) {
+        prefs.setString(StorageConstants.authToken, res.authToken);
         print('Go to Home screen>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
       }
     }
@@ -63,6 +63,10 @@ class AuthController extends GetxController {
   void login(BuildContext context) async {
     log.w('login(BuildContext context)');
     AppFocus.unfocus(context);
+    log.w('validate() = ${loginFormKey.currentState!.validate()}');
+    log.w('email = ${loginEmailController.text}');
+    log.w('password = ${loginPasswordController.text}');
+
     if (loginFormKey.currentState!.validate()) {
       final res = await apiRepository.login(
         LoginRequest(
@@ -70,10 +74,11 @@ class AuthController extends GetxController {
           password: loginPasswordController.text,
         ),
       );
-
+      log.w('res = $res');
       final prefs = Get.find<SharedPreferences>();
       if (res!.token.isNotEmpty) {
-        prefs.setString(StorageConstants.token, res.token);
+        log.w('res.token = ${res.token}');
+        prefs.setString(StorageConstants.authToken, res.token);
         Get.toNamed(Routes.HOME);
       }
     }

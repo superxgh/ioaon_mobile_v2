@@ -3,11 +3,11 @@ import 'dart:convert';
 class RegisterResponse {
   RegisterResponse({
     required this.id,
-    required this.token,
+    required this.authToken,
   });
 
   int id;
-  String token;
+  String authToken;
 
   factory RegisterResponse.fromRawJson(String str) =>
       RegisterResponse.fromJson(json.decode(str));
@@ -17,11 +17,11 @@ class RegisterResponse {
   factory RegisterResponse.fromJson(Map<String, dynamic> json) =>
       RegisterResponse(
         id: json["id"],
-        token: json["token"],
+        authToken: json["authToken"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "token": token,
+        "authToken": authToken,
       };
 }

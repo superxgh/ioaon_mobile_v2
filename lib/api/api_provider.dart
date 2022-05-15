@@ -5,9 +5,13 @@ import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
 class ApiProvider extends BaseProvider {
   final log = logger(ApiProvider);
-  Future<Response> login(String path, LoginRequest data) {
+  Future<Response> login(String path, LoginRequest data) async {
     log.i('login(String path, LoginRequest data)');
-    return post(path, data.toJson());
+    log.i('path = $path');
+    log.i('data.toJson() = ${data.toJson()}');
+    Response res = await post(path, data.toJson());
+    log.i('res = $res');
+    return res;
   }
 
   Future<Response> register(String path, RegisterRequest data) {
