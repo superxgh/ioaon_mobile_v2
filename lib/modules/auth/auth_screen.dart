@@ -3,10 +3,15 @@ import 'package:ioaon_mobile_v2/modules/auth/auth.dart';
 import 'package:ioaon_mobile_v2/routes/routes.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
+import 'package:ioaon_mobile_v2/utils/logging.dart';
 
 class AuthScreen extends GetView<AuthController> {
+  final log = logger(AuthScreen);
   @override
   Widget build(BuildContext context) {
+    // log.i('build(BuildContext context)');
+    // var locale = Locale('th', 'TH');
+    // Get.updateLocale(locale);
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -29,7 +34,7 @@ class AuthScreen extends GetView<AuthController> {
         ),
         SizedBox(height: 20.0),
         Text(
-          'Welcome',
+          'welcome'.tr,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: CommonConstants.largeText,
@@ -39,7 +44,7 @@ class AuthScreen extends GetView<AuthController> {
         ),
         SizedBox(height: 10.0),
         Text(
-          'Let\'s start now!',
+          'let_start_now'.tr,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: CommonConstants.normalText,
@@ -48,21 +53,21 @@ class AuthScreen extends GetView<AuthController> {
         ),
         SizedBox(height: 50.0),
         GradientButton(
-          text: 'Sign In',
+          text: 'sign_in'.tr,
           onPressed: () {
             Get.toNamed(Routes.AUTH + Routes.LOGIN, arguments: controller);
           },
         ),
         SizedBox(height: 20.0),
         BorderButton(
-          text: 'Sign Up',
+          text: 'sign_up'.tr,
           onPressed: () {
             Get.toNamed(Routes.AUTH + Routes.REGISTER, arguments: controller);
           },
         ),
         SizedBox(height: 62.0),
         Text(
-          'This is a demo only used for test.',
+          'app_for_test'.tr,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: CommonConstants.smallText,

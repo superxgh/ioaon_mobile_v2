@@ -7,4 +7,10 @@ const Map<String, String> en_US = {
   'total_infecteds': 'Total Infecteds',
   'details': 'Details',
   'total_recovered': 'Total Recovered',
+  // Auth screen ------------------------------------------------
+  'welcome': 'Welcome',
+  'let_start_now': 'Let\'s start now!',
+  'sign_in': 'Sign In',
+  'sign_up': 'Sign Up',
+  'app_for_test': 'This is a demo only used for test.',
 };

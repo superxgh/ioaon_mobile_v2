@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/modules/auth/auth.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
+import 'package:ioaon_mobile_v2/utils/logging.dart';
 
 class RegisterScreen extends StatelessWidget {
+  final log = logger(RegisterScreen);
   final AuthController controller = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
+    log.i('build(BuildContext context)');
     return Stack(
       children: [
         GradientBackground(),

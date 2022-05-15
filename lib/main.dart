@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
+import 'package:ioaon_mobile_v2/utils/logging.dart';
 
 import 'app_binding.dart';
 import 'di.dart';
@@ -18,8 +19,12 @@ void main() async {
 }
 
 class App extends StatelessWidget {
+
+  final log = logger(App);
+
   @override
   Widget build(BuildContext context) {
+    log.i('build(BuildContext context)');
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       enableLog: true,

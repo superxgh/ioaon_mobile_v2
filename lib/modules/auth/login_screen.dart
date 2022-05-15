@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
+import 'package:ioaon_mobile_v2/utils/logging.dart';
 
 import 'auth_controller.dart';
 
 class LoginScreen extends StatelessWidget {
+  final log = logger(LoginScreen);
   final AuthController controller = Get.arguments;
   @override
   Widget build(BuildContext context) {
+    log.i('build(BuildContext context)');
     return Stack(
       children: [
         GradientBackground(),
