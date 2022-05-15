@@ -14,6 +14,13 @@ const Map<String, String> en_US = {
   'sign_in': 'Sign In',
   'sign_up': 'Sign Up',
 
+  // Main tabs ------------------------------------------------
+  'home': 'Home',
+  'discover': 'Discover',
+  'resource': 'Resource',
+  'index': 'Index',
+  'me': 'Me',
+
   // Auth screen ------------------------------------------------
   'welcome': 'Welcome',
   'let_start_now': 'Let\'s start now!',

@@ -1,23 +1,24 @@
 import 'dart:async';
-import 'package:ioaon_mobile_v2/api/api.dart';
+import 'package:ioaon_mobile_v2/api/provider/user_api_provider.dart';
 import 'package:ioaon_mobile_v2/models/models.dart';
-import 'package:ioaon_mobile_v2/models/response/users_response.dart';
+import 'package:ioaon_mobile_v2/models/response/user_response.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
-import 'api.dart';
+import 'api_constants.dart';
+
 
 class ApiRepository {
 
   final log = logger(ApiRepository);
 
-  ApiRepository({required this.apiProvider});
+  ApiRepository({required this.userApiProvider});
 
-  final ApiProvider apiProvider;
+  final UserApiProvider userApiProvider;
 
   Future<LoginResponse?> login(LoginRequest data) async {
     log.e('login(LoginRequest data)');
     log.e('data = ${data.toJson()}');
-    final res = await apiProvider.login(ApiConstants.login, data);
+    final res = await userApiProvider.login(ApiConstants.login, data);
     log.e('statusCode = ${res.statusCode}');
     log.e('body = ${res.body}');
     if (res.statusCode == 200) {
@@ -26,18 +27,28 @@ class ApiRepository {
   }
 
   Future<RegisterResponse?> register(RegisterRequest data) async {
-    final res = await apiProvider.register('/api/register', data);
+    final res = await userApiProvider.register('/api/register', data);
     if (res.statusCode == 200) {
       return RegisterResponse.fromJson(res.body);
     }
   }
 
-  Future<UsersResponse?> getUsers() async {
+  Future<UserResponse?> getUsers() async {
     log.e('getUsers()');
-    final res = await apiProvider.getUsers(ApiConstants.login);
+    final res = await userApiProvider.getUsers(ApiConstants.login);
     log.e('res = $res');
     if (res.statusCode == 200) {
-      return UsersResponse.fromJson(res.body);
+      return UserResponse.fromJson(res.body);
+    }
+  }
+
+  Future<UserResponse?> getUserByToken() async {
+    log.e('getUserByToken()');
+    final res = await userApiProvider.getUserByToken(ApiConstants.getUser);
+    log.e('res.statusCode = ${res.statusCode}');
+    log.e('res.body = ${res.body}');
+    if (res.statusCode == 200) {
+      return UserResponse.fromJson(res.body);
     }
   }
 }

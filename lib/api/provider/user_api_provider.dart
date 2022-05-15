@@ -3,8 +3,8 @@ import 'package:ioaon_mobile_v2/models/models.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
-class ApiProvider extends BaseProvider {
-  final log = logger(ApiProvider);
+class UserApiProvider extends BaseProvider {
+  final log = logger(UserApiProvider);
   Future<Response> login(String path, LoginRequest data) async {
     log.i('login(String path, LoginRequest data)');
     log.i('path = $path');
@@ -23,4 +23,10 @@ class ApiProvider extends BaseProvider {
     log.i('getUsers(String path)');
     return get(path);
   }
+
+  Future<Response> getUserByToken(String path) {
+    log.i('getUserByToken(String path)');
+    return get(path);
+  }
+
 }

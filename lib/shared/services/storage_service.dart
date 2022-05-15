@@ -1,8 +1,16 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 class StorageService extends GetxService {
-  Future<SharedPreferences> init() async {
-    return await SharedPreferences.getInstance();
+
+  static final box = GetStorage();
+
+  static dynamic read(String key) {
+    return box.read(key);
   }
+
+  static void write(String key, dynamic value) {
+    box.write(key, value);
+  }
+
 }

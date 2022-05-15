@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:ioaon_mobile_v2/api/api.dart';
-import 'package:ioaon_mobile_v2/models/response/users_response.dart';
+import 'package:ioaon_mobile_v2/models/response/user_response.dart';
+import 'package:ioaon_mobile_v2/models/user.dart';
 import 'package:ioaon_mobile_v2/modules/home/home.dart';
+import 'package:ioaon_mobile_v2/routes/app_pages.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
@@ -15,7 +17,6 @@ class HomeController extends GetxController {
   HomeController({required this.apiRepository});
 
   var currentTab = MainTabs.home.obs;
-  var users = Rxn<UsersResponse>();
   // var user = Rxn<Datum>();
   var user = {};
 
@@ -26,10 +27,16 @@ class HomeController extends GetxController {
   late MeTab meTab;
 
   @override
+  void onReady() async {
+    super.onReady();
+    log.w('onReady()');
+    await loadUserByToken();
+  }
+
+  @override
   void onInit() async {
     super.onInit();
     log.w('onInit()');
-    loadUserByToken();
     mainTab = MainTab();
     discoverTab = DiscoverTab();
     resourceTab = ResourceTab();
@@ -39,40 +46,39 @@ class HomeController extends GetxController {
 
   Future<void> loadUserByToken() async {
     log.w('loadUserByToken()');
-    var prefs = Get.find<SharedPreferences>();
-    String authToken = prefs.getString(StorageConstants.authToken) ?? '';
+    log.w('StorageService read token');
+    String authToken = StorageService.read(StorageConstants.authToken);
     log.w('authToken = $authToken');
-    // var _users = await apiRepository.getUsers();
-    // log.w('_users = $_users');
-    // if (_users != null) {
-    //   users.value = _users;
-    //   _saveUserInfo(_users);
-    // } else {
-    //   // Goto login
-    // }
+    UserResponse? _usersResponse = await apiRepository.getUserByToken();
+    log.w('_usersResponse = $_usersResponse');
+    if (_usersResponse != null) {
+      log.w('StorageService write user');
+      StorageService.write(StorageConstants.user, _usersResponse);
+    } else {
+      Get.toNamed(Routes.LOGIN);
+    }
   }
 
   Future<void> loadUsers() async {
     log.w('loadUsers()');
-    var _users = await apiRepository.getUsers();
-    log.w('_users = $_users');
-    if (_users!.data!.length > 0) {
-      users.value = _users;
-      users.refresh();
-      _saveUserInfo(_users);
-    }
+    // var _users = await apiRepository.getUsers();
+    // log.w('_users = $_users');
+    // if (_users!.data!.length > 0) {
+    //   users.value = _users;
+    //   users.refresh();
+    //   _saveUserInfo(_users);
+    // }
   }
 
   void signout() {
     log.w('signout()');
-    var prefs = Get.find<SharedPreferences>();
-    prefs.clear();
+    PreferenceService.clear();
 
     // Get.back();
     NavigatorHelper.popLastScreens(popCount: 2);
   }
 
-  void _saveUserInfo(UsersResponse users) {
+  void _saveUserInfo(UserResponse users) {
     log.w('_saveUserInfo(UsersResponse users)');
     // var random = new Random();
     // var index = random.nextInt(users.data!.length);

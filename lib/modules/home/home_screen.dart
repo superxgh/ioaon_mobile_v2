@@ -28,29 +28,29 @@ class HomeScreen extends GetView<HomeController> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           _buildNavigationBarItem(
-            "Home",
+            "home".tr,
             MainTabs.home == controller.currentTab.value
                 ? "icon_home_activited.svg"
                 : "icon_home.svg",
           ),
           _buildNavigationBarItem(
-            "Discover",
+            "discover".tr,
             MainTabs.discover == controller.currentTab.value
                 ? "icon_discover_activited.svg"
                 : "icon_discover.svg",
           ),
           _buildNavigationBarItem(
-            "Resource",
+            "resource".tr,
             "icon_resource.svg",
           ),
           _buildNavigationBarItem(
-            "Inbox",
+            "inbox".tr,
             MainTabs.inbox == controller.currentTab.value
                 ? "icon_inbox_activited.svg"
                 : "icon_inbox.svg",
           ),
           _buildNavigationBarItem(
-            "Me",
+            "me".tr,
             MainTabs.me == controller.currentTab.value
                 ? "icon_me_activited.svg"
                 : "icon_me.svg",

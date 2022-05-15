@@ -66,6 +66,8 @@ class AuthController extends GetxController {
     log.w('validate() = ${loginFormKey.currentState!.validate()}');
     log.w('email = ${loginEmailController.text}');
     log.w('password = ${loginPasswordController.text}');
+    log.w('Pres token = ${PreferenceService.readString(StorageConstants.authToken)}');
+    log.w('Store token = ${StorageService.read(StorageConstants.authToken)}');
 
     if (loginFormKey.currentState!.validate()) {
       final res = await apiRepository.login(
@@ -74,12 +76,15 @@ class AuthController extends GetxController {
           password: loginPasswordController.text,
         ),
       );
-      log.w('res = $res');
-      final prefs = Get.find<SharedPreferences>();
       if (res!.token.isNotEmpty) {
         log.w('res.token = ${res.token}');
-        prefs.setString(StorageConstants.authToken, res.token);
+
+        PreferenceService.writeString(StorageConstants.authToken, res.token);
+        StorageService.write(StorageConstants.authToken, res.token);
+
+        // Goto home screen
         Get.toNamed(Routes.HOME);
+
       }
     }
   }

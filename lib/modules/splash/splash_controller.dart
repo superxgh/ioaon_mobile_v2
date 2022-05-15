@@ -16,6 +16,7 @@ class SplashController extends GetxController {
     try {
       if (storage.getString(StorageConstants.authToken) != null) {
         log.w('storage.getString(StorageConstants.token) = ${storage.getString(StorageConstants.authToken)}');
+        StorageService.write(StorageConstants.authToken, storage.getString(StorageConstants.authToken));
         log.w('goto Routes.HONE');
         Get.toNamed(Routes.HOME);
       } else {
