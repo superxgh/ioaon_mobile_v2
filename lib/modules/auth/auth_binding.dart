@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ioaon_mobile_v2/utils/logging.dart';
+import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
 import 'auth_controller.dart';
 

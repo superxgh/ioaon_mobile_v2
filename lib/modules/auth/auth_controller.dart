@@ -4,7 +4,7 @@ import 'package:ioaon_mobile_v2/models/models.dart';
 import 'package:ioaon_mobile_v2/routes/app_pages.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
-import 'package:ioaon_mobile_v2/utils/logging.dart';
+import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
-import 'package:ioaon_mobile_v2/utils/logging.dart';
+import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
 import 'auth_controller.dart';
 
@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           appBar: CommonWidget.appBar(
             context,
-            'Sign In',
+            'sign_in'.tr,
             Icons.arrow_back,
             Colors.white,
           ),
@@ -42,15 +42,14 @@ class LoginScreen extends StatelessWidget {
             InputField(
               controller: controller.loginEmailController,
               keyboardType: TextInputType.text,
-              labelText: 'Email address',
-              placeholder: 'Enter Email Address',
+              labelText: 'email'.tr,
+              placeholder: 'enter_email'.tr,
               validator: (value) {
                 if (!Regex.isEmail(value!)) {
-                  return 'Email format error.';
+                  return 'error_email_format'.tr;
                 }
-
                 if (value.isEmpty) {
-                  return 'Email is required.';
+                  return 'error_email_format'.tr;
                 }
                 return null;
               },
@@ -59,16 +58,16 @@ class LoginScreen extends StatelessWidget {
             InputField(
               controller: controller.loginPasswordController,
               keyboardType: TextInputType.emailAddress,
-              labelText: 'Password',
-              placeholder: 'Enter Password',
+              labelText: 'password'.tr,
+              placeholder: 'enter_password'.tr,
               password: true,
               validator: (value) {
                 if (value!.isEmpty) {
-                  return 'Password is required.';
+                  return 'please_input_password'.tr;
                 }
 
                 if (value.length < 6 || value.length > 15) {
-                  return 'Password should be 6~15 characters';
+                  return 'password_6_15'.tr;
                 }
 
                 return null;
@@ -76,7 +75,7 @@ class LoginScreen extends StatelessWidget {
             ),
             CommonWidget.rowHeight(height: 80),
             BorderButton(
-              text: 'Sign In',
+              text: 'sign_in'.tr,
               backgroundColor: Colors.white,
               onPressed: () {
                 controller.login(context);

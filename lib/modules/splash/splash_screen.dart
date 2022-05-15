@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
-import 'package:ioaon_mobile_v2/utils/logging.dart';
+import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
 class SplashScreen extends StatelessWidget {
   final log = logger(SplashScreen);

@@ -1,7 +1,7 @@
 import 'package:ioaon_mobile_v2/api/base_provider.dart';
 import 'package:ioaon_mobile_v2/models/models.dart';
 import 'package:get/get.dart';
-import 'package:ioaon_mobile_v2/utils/logging.dart';
+import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
 class ApiProvider extends BaseProvider {
   final log = logger(ApiProvider);

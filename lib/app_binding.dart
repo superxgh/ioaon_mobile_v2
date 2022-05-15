@@ -1,6 +1,6 @@
 import 'package:ioaon_mobile_v2/api/api.dart';
 import 'package:get/get.dart';
-import 'package:ioaon_mobile_v2/utils/logging.dart';
+import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
 class AppBinding extends Bindings {
   final log = logger(AppBinding);
