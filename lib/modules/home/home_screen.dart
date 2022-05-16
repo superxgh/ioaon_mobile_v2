@@ -70,7 +70,7 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Widget _buildContent(MainTabs tab) {
-    log.i('_buildContent(MainTabs tab)');
+    // log.i('_buildContent(MainTabs tab)');
     switch (tab) {
       case MainTabs.home:
         return controller.mainTab;
@@ -88,9 +88,9 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   BottomNavigationBarItem _buildNavigationBarItem(String label, String svg) {
-    log.i('_buildNavigationBarItem(String label, String svg)');
-    log.i('label = $label');
-    log.i('svg = $svg');
+    // log.i('_buildNavigationBarItem(String label, String svg)');
+    // log.i('label = $label');
+    // log.i('svg = $svg');
     return BottomNavigationBarItem(
       icon: SvgPicture.asset('assets/svgs/$svg'),
       label: label,

@@ -13,4 +13,9 @@ class StorageService extends GetxService {
     box.write(key, value);
   }
 
+  static dynamic remove(String key) {
+    return box.remove(key);
+  }
+
+
 }

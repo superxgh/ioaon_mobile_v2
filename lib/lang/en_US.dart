@@ -20,6 +20,7 @@ const Map<String, String> en_US = {
   'resource': 'Resource',
   'index': 'Index',
   'me': 'Me',
+  'my': 'My',
 
   // Auth screen ------------------------------------------------
   'welcome': 'Welcome',

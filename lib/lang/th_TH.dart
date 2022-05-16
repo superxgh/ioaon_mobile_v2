@@ -20,6 +20,7 @@ const Map<String, String> th_TH = {
   'resource': 'บริการ',
   'index': 'แขท',
   'me': 'ส่วนตัว',
+  'my': 'ฉัน',
 
   // Auth screen ------------------------------------------------
   'welcome': 'ยินดีต้อนรับ',

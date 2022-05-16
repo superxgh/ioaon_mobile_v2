@@ -90,7 +90,7 @@ class AuthController extends GetxController {
 
     }
 
-    resetDataOnTestController();
+    // resetDataOnTestController();
   }
 
   void resetDataOnTestController() {

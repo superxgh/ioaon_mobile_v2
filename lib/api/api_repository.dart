@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:ioaon_mobile_v2/api/provider/user_api_provider.dart';
 import 'package:ioaon_mobile_v2/models/models.dart';
 import 'package:ioaon_mobile_v2/models/response/user_response.dart';

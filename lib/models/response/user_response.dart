@@ -56,6 +56,19 @@ class UserResponse {
     );
   }
 
+  factory UserResponse.empty() {
+    return UserResponse(
+      fullName: '',
+      mobileNumber: '',
+      email: '',
+      googleData: null,
+      facebookData: null,
+      role: '',
+      permissions: '',
+      authToken:'',
+    );
+  }
+
   @override
   String toString() {
     return 'UserResponse{fullName: $fullName, mobileNumber: $mobileNumber, email: $email, googleData: $googleData, facebookData: $facebookData, role: $role, permissions: $permissions, authToken: $authToken}';

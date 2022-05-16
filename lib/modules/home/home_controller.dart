@@ -17,8 +17,7 @@ class HomeController extends GetxController {
   HomeController({required this.apiRepository});
 
   var currentTab = MainTabs.home.obs;
-  // var user = Rxn<Datum>();
-  var user = {};
+  var user = Rxn<UserResponse>();
 
   late MainTab mainTab;
   late DiscoverTab discoverTab;
@@ -49,11 +48,12 @@ class HomeController extends GetxController {
     log.w('StorageService read token');
     String authToken = StorageService.read(StorageConstants.authToken);
     log.w('authToken = $authToken');
-    UserResponse? _usersResponse = await apiRepository.getUserByToken();
+    var _usersResponse = await apiRepository.getUserByToken();
     log.w('_usersResponse = $_usersResponse');
     if (_usersResponse != null) {
       log.w('StorageService write user');
       StorageService.write(StorageConstants.user, _usersResponse);
+      user.value = _usersResponse ;
     } else {
       Get.toNamed(Routes.LOGIN);
     }
@@ -73,10 +73,11 @@ class HomeController extends GetxController {
   void signout() {
     log.w('signout()');
     PreferenceService.clear();
+    StorageService.remove(StorageConstants.authToken);
 
-    // Get.offAndToNamed(Routes.SPLASH);
+    Get.offAllNamed(Routes.SPLASH);
     // Get.back();
-    NavigatorHelper.popLastScreens(popCount: 2);
+    // NavigatorHelper.popLastScreens(popCount: 2);
   }
 
   void _saveUserInfo(UserResponse users) {

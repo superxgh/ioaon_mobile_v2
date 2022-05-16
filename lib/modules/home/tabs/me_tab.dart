@@ -34,7 +34,7 @@ class MeTab extends GetView<HomeController> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          'Me',
+          'my'.tr,
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
@@ -49,7 +49,7 @@ class MeTab extends GetView<HomeController> {
           height: 10,
         ),
         Text(
-          '', //${controller.user.value!.email}',
+          '${controller.user.value?.fullName}',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -91,19 +91,19 @@ class MeTab extends GetView<HomeController> {
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          SizedBox(
-            height: 110,
-            width: 110,
-            child: CachedNetworkImage(
-              fit: BoxFit.fill,
-              imageUrl: //controller.user.value!.avatar ??
-                  'https://reqres.in/img/faces/1-image.jpg',
-              placeholder: (context, url) => Image(
-                image: AssetImage('assets/images/icon_success.png'),
-              ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
-          ),
+          // SizedBox(
+          //   height: 110,
+          //   width: 110,
+          //   child: CachedNetworkImage(
+          //     fit: BoxFit.fill,
+          //     imageUrl: //controller.user.value!.avatar ??
+          //         'https://reqres.in/img/faces/1-image.jpg',
+          //     placeholder: (context, url) => Image(
+          //       image: AssetImage('assets/images/icon_success.png'),
+          //     ),
+          //     errorWidget: (context, url, error) => Icon(Icons.error),
+          //   ),
+          // ),
           Container(
             width: 110,
             height: 24,
@@ -112,7 +112,7 @@ class MeTab extends GetView<HomeController> {
               color: hexToColor('#9A434343'),
             ),
             child: Text(
-              '', //controller.user.value!.firstName ?? '',
+              '', //controller.user.mobileNumber,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 14,

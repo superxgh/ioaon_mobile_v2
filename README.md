@@ -37,4 +37,4 @@ Error: Method 'addPostFrameCallback' cannot be called on 'SchedulerBinding?'
 > flutter channel stable
 > flutter --version
 > 
-> 
+> https://github.com/KevinZhang19870314/flutter_getx_boilerplate

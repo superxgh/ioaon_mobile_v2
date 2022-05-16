@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ioaon_mobile_v2/models/response/user_response.dart';
-import 'package:ioaon_mobile_v2/models/user.dart';
 import 'package:ioaon_mobile_v2/modules/home/home.dart';
-import 'package:ioaon_mobile_v2/shared/constants/colors.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ioaon_mobile_v2/shared/constants/storage.dart';
-import 'package:ioaon_mobile_v2/shared/services/storage_service.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 
 class MainTab extends GetView<HomeController> {
@@ -17,11 +10,13 @@ class MainTab extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     log.w('build(BuildContext context)');
-    String fullName = '';
-    dynamic _user = StorageService.read(StorageConstants.user) ?? null;
-    log.w('_user = $_user');
-    if (_user.runtimeType != UserResponse) _user = UserResponse.fromJson(_user);
-    return Text('main = ${_user.fullName}');
+    return Obx(
+          () {
+            var _user = controller.user.value;
+            log.w('user = $_user');
+            return Text('main = ${_user?.fullName}');
+          }
+    );
     /*
     Scaffold(
       body: Obx(

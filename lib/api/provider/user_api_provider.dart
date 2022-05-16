@@ -25,7 +25,7 @@ class UserApiProvider extends BaseProvider {
   }
 
   Future<Response> getUserByToken(String path) {
-    log.i('getUserByToken(String path)');
+    log.i('getUserByToken($path)');
     return get(path);
   }
 
