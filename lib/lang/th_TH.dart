@@ -31,6 +31,9 @@ const Map<String, String> th_TH = {
   'enter_email': 'กรุณากรอกอีเมลล์',
   'enter_password': 'กรุณากรอกรหัสผ่าน',
 
+  // Home screen ------------------------------------------------
+  'net_amount': 'ยอดเงินสุทธิ',
+
   // Suggestion ------------------------------------------------
   'please_input_email': 'กรุณากรอกอีเมลล์',
   'please_input_password': 'กรุณากรอกรหัสผ่าน.',

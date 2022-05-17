@@ -31,6 +31,10 @@ const Map<String, String> en_US = {
   'enter_email': 'Enter Email Address',
   'enter_password': 'Enter Password',
 
+  // Home screen ------------------------------------------------
+  'net_amount': 'Net amount',
+
+
   // Suggestion ------------------------------------------------
   'please_input_email': 'Email is required.',
   'please_input_password': 'Password is required.',
