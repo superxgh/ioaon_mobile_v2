@@ -35,6 +35,13 @@ io.Platform.packageRoot; // ignore: deprecated_member_use
 Error: Method 'addPostFrameCallback' cannot be called on 'SchedulerBinding?' 
 > flutter channel
 > flutter channel stable
+> flutter upgrade
 > flutter --version
+> flutter clean
+> flutter pub get
+> flutter downgrade v2.10.5
+> flutter upgrade
+> flutter clean
+> flutter pub get
 > 
 > https://github.com/KevinZhang19870314/flutter_getx_boilerplate

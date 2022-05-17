@@ -9,11 +9,11 @@ class MainTab extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    log.w('build(BuildContext context)');
+    log.i('>>> build(BuildContext context) in');
     return Obx(
           () {
             var _user = controller.user.value;
-            log.w('user = $_user');
+            log.i('user = $_user');
             return Text('main = ${_user?.fullName}');
           }
     );
@@ -30,8 +30,7 @@ class MainTab extends GetView<HomeController> {
   }
 
   Widget _buildGridView() {
-    log.w('_buildGridView()');
-    log.w('_buildGridView()');
+    log.i('>>> _buildGridView() in');
     return Text('main');
     /*
     MasonryGridView.count(

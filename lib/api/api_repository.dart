@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:ioaon_mobile_v2/api/provider/user_api_provider.dart';
 import 'package:ioaon_mobile_v2/models/models.dart';
 import 'package:ioaon_mobile_v2/models/response/user_response.dart';
@@ -17,14 +16,15 @@ class ApiRepository {
   final UserApiProvider userApiProvider;
 
   Future<LoginResponse?> login(LoginRequest data) async {
-    log.e('login(LoginRequest data)');
-    log.e('data = ${data.toJson()}');
+    log.d('login(LoginRequest data)');
+    log.d('data = ${data.toJson()}');
     final res = await userApiProvider.login(ApiConstants.login, data);
-    log.e('statusCode = ${res.statusCode}');
-    log.e('body = ${res.body}');
+    log.d('statusCode = ${res.statusCode}');
+    log.d('body = ${res.body}');
     if (res.statusCode == 200) {
       return LoginResponse.fromJson(res.body);
     }
+    return null;
   }
 
   Future<RegisterResponse?> register(RegisterRequest data) async {
@@ -32,24 +32,30 @@ class ApiRepository {
     if (res.statusCode == 200) {
       return RegisterResponse.fromJson(res.body);
     }
+    return null;
   }
 
   Future<UserResponse?> getUsers() async {
-    log.e('getUsers()');
+    log.d('getUsers()');
     final res = await userApiProvider.getUsers(ApiConstants.login);
-    log.e('res = $res');
+    log.d('res = $res');
     if (res.statusCode == 200) {
       return UserResponse.fromJson(res.body);
     }
+    return null;
   }
 
   Future<UserResponse?> getUserByToken() async {
-    log.e('getUserByToken()');
+    log.d('>>> getUserByToken() in');
     final res = await userApiProvider.getUserByToken(ApiConstants.getUser);
-    log.e('res.statusCode = ${res.statusCode}');
-    log.e('res.body = ${res.body}');
+    log.d('res.statusCode = ${res.statusCode}');
+    log.d('res.body = ${res.body}');
     if (res.statusCode == 200) {
-      return UserResponse.fromJson(res.body);
+      UserResponse? user = UserResponse.fromJson(res.body);
+      log.d('>>> getUserByToken() out');
+      return user;
     }
+    log.d('>>> getUserByToken() out');
+    return null;
   }
 }

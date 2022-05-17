@@ -6,27 +6,34 @@ import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 class UserApiProvider extends BaseProvider {
   final log = logger(UserApiProvider);
   Future<Response> login(String path, LoginRequest data) async {
-    log.i('login(String path, LoginRequest data)');
-    log.i('path = $path');
-    log.i('data.toJson() = ${data.toJson()}');
+    log.w('>>> login(String path, LoginRequest data) in');
+    log.w('path = $path');
+    log.w('data.toJson() = ${data.toJson()}');
     Response res = await post(path, data.toJson());
-    log.i('res = $res');
+    log.w('res = $res');
+    log.w('>>> login(String path, LoginRequest data) out');
     return res;
   }
 
-  Future<Response> register(String path, RegisterRequest data) {
-    log.i('register(String path, RegisterRequest data)');
-    return post(path, data.toJson());
+  Future<Response> register(String path, RegisterRequest data) async {
+    log.w('>>> register(String path, RegisterRequest data) in');
+    Response res = await post(path, data.toJson());
+    log.w('>>> register(String path, RegisterRequest data) out');
+    return res;
   }
 
-  Future<Response> getUsers(String path) {
-    log.i('getUsers(String path)');
-    return get(path);
+  Future<Response> getUsers(String path) async {
+    log.w('>>> getUsers(String path) in');
+    Response res = await get(path);
+    log.w('>>> getUsers(String path) in');
+    return res;
   }
 
-  Future<Response> getUserByToken(String path) {
-    log.i('getUserByToken($path)');
-    return get(path);
+  Future<Response> getUserByToken(String path) async {
+    log.w('>>> getUserByToken($path) in');
+    Response res = await get(path);
+    log.w('>>> getUserByToken($path) out');
+    return res;
   }
 
 }

@@ -9,24 +9,24 @@ class SplashController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    log.w('onReady()');
+    log.v('onReady()');
 
     await Future.delayed(Duration(milliseconds: 2000));
     var storage = Get.find<SharedPreferences>();
     try {
       if (storage.getString(StorageConstants.authToken) != null) {
-        log.w('storage.getString(StorageConstants.token) = ${storage.getString(StorageConstants.authToken)}');
+        log.v('storage.getString(StorageConstants.token) = ${storage.getString(StorageConstants.authToken)}');
         StorageService.write(StorageConstants.authToken, storage.getString(StorageConstants.authToken));
-        log.w('goto Routes.HONE');
+        log.v('goto Routes.HONE');
         Get.toNamed(Routes.HOME);
       } else {
-        log.w('storage.getString(StorageConstants.token) = null');
-        log.w('goto Routes.AUTH');
+        log.v('storage.getString(StorageConstants.token) = null');
+        log.v('goto Routes.AUTH');
         Get.toNamed(Routes.AUTH);
       }
     } catch (e) {
-      log.w('e =${e.toString()}');
-      log.w('goto Routes.AUTH');
+      log.v('e =${e.toString()}');
+      log.v('goto Routes.AUTH');
       Get.toNamed(Routes.AUTH);
     }
   }

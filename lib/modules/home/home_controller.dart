@@ -1,14 +1,12 @@
-import 'dart:math';
 
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:ioaon_mobile_v2/api/api.dart';
 import 'package:ioaon_mobile_v2/models/response/user_response.dart';
-import 'package:ioaon_mobile_v2/models/user.dart';
 import 'package:ioaon_mobile_v2/modules/home/home.dart';
 import 'package:ioaon_mobile_v2/routes/app_pages.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
   final log = logger(HomeController);
@@ -28,14 +26,17 @@ class HomeController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    log.w('onReady()');
+    log.v('>>> onReady() in');
+    EasyLoading.show(status: 'loading...');
     await loadUserByToken();
+    EasyLoading.dismiss();
+    log.v('>>> onReady() out');
   }
 
   @override
   void onInit() async {
     super.onInit();
-    log.w('onInit()');
+    log.v('onInit()');
     mainTab = MainTab();
     discoverTab = DiscoverTab();
     resourceTab = ResourceTab();
@@ -44,25 +45,26 @@ class HomeController extends GetxController {
   }
 
   Future<void> loadUserByToken() async {
-    log.w('loadUserByToken()');
-    log.w('StorageService read token');
+    log.v('>>> loadUserByToken() in');
+    log.v('StorageService read token');
     String authToken = StorageService.read(StorageConstants.authToken);
-    log.w('authToken = $authToken');
+    log.v('authToken = $authToken');
     var _usersResponse = await apiRepository.getUserByToken();
-    log.w('_usersResponse = $_usersResponse');
+    log.v('_usersResponse = $_usersResponse');
     if (_usersResponse != null) {
-      log.w('StorageService write user');
+      log.v('StorageService write user');
       StorageService.write(StorageConstants.user, _usersResponse);
       user.value = _usersResponse ;
     } else {
       Get.toNamed(Routes.LOGIN);
     }
+    log.v('>>> loadUserByToken() out');
   }
 
   Future<void> loadUsers() async {
-    log.w('loadUsers()');
+    log.v('loadUsers()');
     // var _users = await apiRepository.getUsers();
-    // log.w('_users = $_users');
+    // log.v('_users = $_users');
     // if (_users!.data!.length > 0) {
     //   users.value = _users;
     //   users.refresh();
@@ -71,7 +73,7 @@ class HomeController extends GetxController {
   }
 
   void signout() {
-    log.w('signout()');
+    log.v('signout()');
     PreferenceService.clear();
     StorageService.remove(StorageConstants.authToken);
 
@@ -81,7 +83,7 @@ class HomeController extends GetxController {
   }
 
   void _saveUserInfo(UserResponse users) {
-    log.w('_saveUserInfo(UsersResponse users)');
+    log.v('_saveUserInfo(UsersResponse users)');
     // var random = new Random();
     // var index = random.nextInt(users.data!.length);
     // user.value = users.data![index];
@@ -94,14 +96,14 @@ class HomeController extends GetxController {
   }
 
   void switchTab(index) {
-    log.w('switchTab(index)');
+    log.v('switchTab(index)');
     var tab = _getCurrentTab(index);
     currentTab.value = tab;
   }
 
   int getCurrentIndex(MainTabs tab) {
-    log.w('getCurrentIndex(MainTabs tab)');
-    log.w('tab = $tab');
+    log.v('getCurrentIndex(MainTabs tab)');
+    log.v('tab = $tab');
     switch (tab) {
       case MainTabs.home:
         return 0;
@@ -119,7 +121,7 @@ class HomeController extends GetxController {
   }
 
   MainTabs _getCurrentTab(int index) {
-    log.w('_getCurrentTab(int index)');
+    log.v('_getCurrentTab(int index)');
     switch (index) {
       case 0:
         return MainTabs.home;

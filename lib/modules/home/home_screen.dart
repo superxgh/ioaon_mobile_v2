@@ -22,6 +22,16 @@ class HomeScreen extends GetView<HomeController> {
   Widget _buildWidget() {
     log.i('_buildWidget()');
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          // CircleAvatar(
+          //   backgroundImage: NetworkImage(dummyAvatarUrl),
+          //   radius: 24,
+          // ),
+          Text('MyProfile'),
+          SizedBox(width: 24)
+        ],
+      ),
       body: Center(
         child: _buildContent(controller.currentTab.value),
       ),

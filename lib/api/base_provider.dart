@@ -25,11 +25,11 @@ class BaseProvider extends GetConnect {
   }
 
   FutureOr<Request> requestInterceptor(request) async {
-    log.i('requestInterceptor(request)');
+    log.w('requestInterceptor(request)');
     final authToken = StorageService.read(StorageConstants.authToken);
     request.headers['X-Requested-With'] = 'XMLHttpRequest';
     request.headers['Authorization'] = 'Bearer $authToken';
-    log.i('request = ${request.headers}');
+    log.w('request = ${request.headers}');
 
     EasyLoading.show(status: 'loading...');
     return request;

@@ -17,6 +17,7 @@ class PreferenceService extends GetxService {
   static String? readString(String key) {
     var prefs = Get.find<SharedPreferences>();
     prefs.getString(key);
+    return null;
   }
 
   static void clear() {
