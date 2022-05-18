@@ -16,6 +16,8 @@ class HomeController extends GetxController {
 
   var currentTab = MainTabs.home.obs;
   var user = Rxn<UserResponse>();
+  var selectedDay = Rxn<DateTime>();
+  // CalendarController calendarController;
 
   late MainTab mainTab;
   late DiscoverTab discoverTab;
@@ -29,6 +31,7 @@ class HomeController extends GetxController {
     log.v('>>> onReady() in');
     EasyLoading.show(status: 'loading...');
     await loadUserByToken();
+    selectedDay.value = DateTime.now();
     EasyLoading.dismiss();
     log.v('>>> onReady() out');
   }

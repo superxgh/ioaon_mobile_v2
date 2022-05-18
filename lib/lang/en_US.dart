@@ -14,6 +14,20 @@ const Map<String, String> en_US = {
   'sign_in': 'Sign In',
   'sign_up': 'Sign Up',
 
+  // Month ------------------------------------------------
+  'month_01': 'January',
+  'month_02': 'February',
+  'month_03': 'March',
+  'month_04': 'April',
+  'month_05': 'May',
+  'month_06': 'June',
+  'month_07': 'July',
+  'month_08': 'August',
+  'month_09': 'September',
+  'month_010': 'October',
+  'month_011': 'November',
+  'month_012': 'December',
+
   // Main tabs ------------------------------------------------
   'home': 'Home',
   'discover': 'Discover',

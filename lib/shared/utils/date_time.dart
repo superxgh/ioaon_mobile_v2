@@ -1,4 +1,6 @@
 import 'package:date_time_format/date_time_format.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 String getCurrentDateTxtTimeNow() {
   final dateTime = DateTime.now();
@@ -15,6 +17,12 @@ DateTime strToDateTime(String str) {
 
 String getDateTxtYYYYMMDD(DateTime dt) {
   return dt.format('Y-m-d');  // 2019-10-15T19:42:05-08:00
+}
+
+String getDateTxtYYYYMM(DateTime dt, var locale) {
+  String strYear = dt.format('Y');
+  if (locale.toString() == 'th_TH')   strYear = (int.parse(strYear) + 543).toString() ;
+  return ('month_${dt.format('m')}'.tr + ' ' + strYear);
 }
 
 String getDateTxtHHMM(DateTime dt) {
