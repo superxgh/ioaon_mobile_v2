@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:ioaon_mobile_v2/modules/home/home.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
-import '../../../lang/translation_service.dart';
 import '../../../shared/utils/date_time.dart';
-import '../../../shared/utils/string.dart';
+import '../../../shared/utils/datetime_picker/flutter_datetime_picker.dart';
+import '../../../shared/utils/datetime_picker/src/i18n_model.dart';
 import '../main_contents/account_summary.dart';
 import '../main_contents/month_year_picker.dart';
 
@@ -55,7 +54,7 @@ class MainTab extends GetView<HomeController> {
 
                   },
                   child: Text(
-                    getDateTxtYYYYMM(controller.selectedDay.value!, Get.locale),
+                    getDateTxtYYYYMM(controller.selectedDay.value, Get.locale),
                     style: TextStyle(color: Colors.blue, fontSize: 25.0),
                   ));
             }),

@@ -1,18 +1,23 @@
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+
+import '../../../shared/utils/datetime_picker/src/date_model.dart';
+import '../../../shared/utils/datetime_picker/src/i18n_model.dart';
 
 class MonthYearPicker extends DatePickerModel {
+
   MonthYearPicker({
-    required DateTime currentTime,
-    required DateTime minTime,
-    required DateTime maxTime,
-    required LocaleType locale}) : super(
-      locale: locale,
-      minTime: minTime,
+    DateTime? currentTime,
+    DateTime? maxTime,
+    DateTime? minTime,
+    LocaleType? locale}) : super(
+      currentTime: currentTime,
       maxTime: maxTime,
-      currentTime: currentTime);
+      minTime: minTime,
+      locale: locale
+  );
 
   @override
   List<int> layoutProportions() {
     return [1, 1, 0];
   }
+
 }
