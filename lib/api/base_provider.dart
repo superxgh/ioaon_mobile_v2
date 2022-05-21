@@ -31,7 +31,7 @@ class BaseProvider extends GetConnect {
     request.headers['Authorization'] = 'Bearer $authToken';
     log.w('request = ${request.headers}');
 
-    EasyLoading.show(status: 'loading...');
+    // EasyLoading.show(status: 'loading...');
     return request;
   }
 

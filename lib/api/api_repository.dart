@@ -46,16 +46,41 @@ class ApiRepository {
   }
 
   Future<UserResponse?> getUserByToken() async {
-    log.d('>>> getUserByToken() in');
-    final res = await userApiProvider.getUserByToken(ApiConstants.getUser);
-    log.d('res.statusCode = ${res.statusCode}');
-    log.d('res.body = ${res.body}');
-    if (res.statusCode == 200) {
-      UserResponse? user = UserResponse.fromJson(res.body);
+    try {
+      log.d('>>> getUserByToken() in');
+      final res = await userApiProvider.getUserByToken(ApiConstants.getUser);
+      log.d('res.statusCode = ${res.statusCode}');
+      log.d('res.body = ${res.body}');
+      if (res.statusCode == 200) {
+        UserResponse? user = UserResponse.fromJson(res.body);
+        log.d('>>> getUserByToken() out');
+        return user;
+      }
       log.d('>>> getUserByToken() out');
-      return user;
+      return null;
+    } catch (e) {
+      log.d(e);
+      throw e;
     }
-    log.d('>>> getUserByToken() out');
-    return null;
+  }
+
+  Future<UserResponse?> getTestHttp(dynamic data) async {
+    try {
+      log.d('>>> getTestHttp() in');
+      log.d('data = $data');
+      final res = await userApiProvider.postTestHttp(ApiConstants.getTestHttp, data);
+      log.d('res.statusCode = ${res.statusCode}');
+      log.d('res.body = ${res.body}');
+      if (res.statusCode == 200) {
+        UserResponse? user = UserResponse.fromJson(res.body);
+        log.d('>>> getTestHttp() out');
+        return user;
+      }
+      log.d('>>> getTestHttp() out');
+      return null;
+    } catch (e) {
+      log.d(e);
+      throw e;
+    }
   }
 }

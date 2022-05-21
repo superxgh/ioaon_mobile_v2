@@ -29,3 +29,5 @@ String getDateTxtYYYYMM(DateTime? dt, var locale) {
 String getDateTxtHHMM(DateTime dt) {
   return dt.format('H:s');  // 2019-10-15T19:42:05-08:00
 }
+
+

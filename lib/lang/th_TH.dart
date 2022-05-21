@@ -47,6 +47,9 @@ const Map<String, String> th_TH = {
 
   // Home screen ------------------------------------------------
   'net_amount': 'ยอดเงินสุทธิ',
+  'income': 'รายรับ',
+  'expenses': 'รายจ่าย',
+  'account_item_list': 'รายการบัญชี',
 
   // Suggestion ------------------------------------------------
   'please_input_email': 'กรุณากรอกอีเมลล์',

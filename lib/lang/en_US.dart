@@ -47,7 +47,9 @@ const Map<String, String> en_US = {
 
   // Home screen ------------------------------------------------
   'net_amount': 'Net amount',
-
+  'income': 'Income',
+  'expenses': 'Expenses',
+  'account_item_list': 'Account List',
 
   // Suggestion ------------------------------------------------
   'please_input_email': 'Email is required.',

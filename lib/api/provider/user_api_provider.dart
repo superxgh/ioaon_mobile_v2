@@ -30,10 +30,31 @@ class UserApiProvider extends BaseProvider {
   }
 
   Future<Response> getUserByToken(String path) async {
-    log.w('>>> getUserByToken($path) in');
-    Response res = await get(path);
-    log.w('>>> getUserByToken($path) out');
-    return res;
+    try {
+      log.w('>>> getUserByToken($path) in');
+      Response? res = await get(path);
+      log.w('res.statusCode = ${res.statusCode}');
+      log.w('res.body = ${res.body}');
+      return res;
+    } catch (e) {
+      log.w(e);
+      throw e;
+    }
+  }
+
+  Future<Response> postTestHttp(String path, dynamic data) async {
+    try {
+      log.w('>>> getTestHttp() )in');
+      log.w('path = $path');
+      log.w('data = $data');
+      Response? res = await post(path, data);
+      log.w('res.statusCode = ${res.statusCode}');
+      log.w('res.body = ${res.body}');
+      return res;
+    } catch (e) {
+      log.w(e);
+      throw e;
+    }
   }
 
 }

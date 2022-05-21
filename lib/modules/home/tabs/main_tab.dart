@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/modules/home/home.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
-import '../../../shared/utils/date_time.dart';
-import '../../../shared/utils/datetime_picker/flutter_datetime_picker.dart';
-import '../../../shared/utils/datetime_picker/src/i18n_model.dart';
 import '../main_contents/account_summary.dart';
 import '../main_contents/month_year_picker.dart';
 
@@ -14,137 +11,37 @@ class MainTab extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     log.i('>>> build(BuildContext context) in');
-    var width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    var height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    log.i('key = $key');
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
 
     return SingleChildScrollView(
         child: Column(
-          children: [
-            Obx(() {
-              return AccountSummary(
-                  width: width,
-                  height: height,
-                  fullName: controller.user.value?.fullName ?? '',
-                  netAmount: 4000.0);
-            }
-            ),
-            Obx(() {
-              log.i('before return selectedDay = ${controller.selectedDay.value}');
-
-              return TextButton(
-                  onPressed: () {
-
-                    DatePicker.showPicker(context,
-                        pickerModel: MonthYearPicker(
-                            minTime: DateTime(2020, 1, 1),
-                            maxTime: DateTime.now(),
-                            currentTime: DateTime.now(),
-                            locale: LocaleType.th
-                        ),
-                        onConfirm: (date) {
-                          controller.selectedDay.value = date;
-                        },
-                        showTitleActions: true);
-
-                  },
-                  child: Text(
-                    getDateTxtYYYYMM(controller.selectedDay.value, Get.locale),
-                    style: TextStyle(color: Colors.blue, fontSize: 25.0),
-                  ));
-            }),
-            Padding(
-                padding:
-                EdgeInsets.only(left: width * 0.04, right: width * 0.04),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      "Movimentações",
-                      style: TextStyle(
-                          color: Colors.grey[600], fontSize: width * 0.04),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: width * 0.02),
-                      child: Icon(
-                        Icons.sort,
-                        size: width * 0.07,
-                        color: Colors.grey[400],
-                      ),
-                    )
-                  ],
-                )),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text("EEEEEEEEE"),
-            )
-          ],
-        ));
+      children: [
+        Obx(() {
+          return AccountSummary(
+              width: width, height: height, fullName: controller.user.value?.fullName ?? '', netAmount: 4000.0);
+        }),
+        Obx(() {
+          log.i('before return selectedDay = ${controller.selectedDay.value}');
+          return (controller.selectedDay.value == null)
+            ? Text('Loading....')
+            : MonthAndYearSelector(
+            dateTime: controller.selectedDay.value!,
+            onConfirm: (date) {
+              controller.selectedDay.value = date;
+            },
+          );
+        }),
+        // Obx(() {
+        //   return AccountStats(
+        //       width: width, height: height, fullName: controller.user.value?.fullName ?? '', netAmount: 4000.0);
+        // }),
+        // Obx(() {
+        //   return AccountItemList(width: width, height: height, fullName: controller.user.value?.fullName ?? '');
+        // }),
+      ],
+    ));
     /*
     Scaffold(
       body: Obx(

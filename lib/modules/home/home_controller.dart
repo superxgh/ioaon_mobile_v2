@@ -11,7 +11,7 @@ import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 class HomeController extends GetxController {
   final log = logger(HomeController);
 
-  final ApiRepository apiRepository;
+  late ApiRepository apiRepository;
   HomeController({required this.apiRepository});
 
   var currentTab = MainTabs.home.obs;
@@ -25,6 +25,22 @@ class HomeController extends GetxController {
   late InboxTab inboxTab;
   late MeTab meTab;
 
+  final name = 'name1'.obs;
+
+  void changeName() => name.value = 'name3';
+
+  @override
+  void onInit() async {
+    super.onInit();
+    log.v('onInit()');
+    name.value = 'name2';
+    mainTab = MainTab();
+    discoverTab = DiscoverTab();
+    resourceTab = ResourceTab();
+    inboxTab = InboxTab();
+    meTab = MeTab();
+  }
+
   @override
   void onReady() async {
     super.onReady();
@@ -36,32 +52,48 @@ class HomeController extends GetxController {
     log.v('>>> onReady() out');
   }
 
-  @override
-  void onInit() async {
-    super.onInit();
-    log.v('onInit()');
-    mainTab = MainTab();
-    discoverTab = DiscoverTab();
-    resourceTab = ResourceTab();
-    inboxTab = InboxTab();
-    meTab = MeTab();
-  }
 
   Future<void> loadUserByToken() async {
-    log.v('>>> loadUserByToken() in');
-    log.v('StorageService read token');
-    String authToken = StorageService.read(StorageConstants.authToken);
-    log.v('authToken = $authToken');
-    var _usersResponse = await apiRepository.getUserByToken();
-    log.v('_usersResponse = $_usersResponse');
-    if (_usersResponse != null) {
-      log.v('StorageService write user');
-      StorageService.write(StorageConstants.user, _usersResponse);
-      user.value = _usersResponse ;
-    } else {
-      Get.toNamed(Routes.LOGIN);
+    try {
+      log.v('>>> loadUserByToken() in');
+      log.v('StorageService read token');
+      String authToken = StorageService.read(StorageConstants.authToken);
+      log.v('authToken = $authToken');
+      var _usersResponse = await apiRepository.getUserByToken();
+      log.v('_usersResponse = $_usersResponse');
+      if (_usersResponse != null) {
+        log.v('StorageService write user');
+        StorageService.write(StorageConstants.user, _usersResponse);
+        user.value = _usersResponse;
+      } else {
+        Get.toNamed(Routes.LOGIN);
+      }
+      log.v('>>> loadUserByToken() out');
+    } catch (e) {
+      log.v(e);
     }
-    log.v('>>> loadUserByToken() out');
+  }
+
+  Future<void> postTestHttp() async {
+    try {
+      log.v('>>> postTestHttp() in');
+      var data = {
+        "email": "eve.holt@reqres.in",
+        "password": "pistol"
+      };
+      var _usersResponse = await apiRepository.getTestHttp(data);
+      log.v('_usersResponse = $_usersResponse');
+      if (_usersResponse != null) {
+        log.v('StorageService write user');
+        StorageService.write(StorageConstants.user, _usersResponse);
+        user.value = _usersResponse;
+      } else {
+        Get.toNamed(Routes.LOGIN);
+      }
+      log.v('>>> postTestHttp() out');
+    } catch (e) {
+      log.v(e);
+    }
   }
 
   Future<void> loadUsers() async {
