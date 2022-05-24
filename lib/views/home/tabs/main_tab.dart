@@ -33,6 +33,9 @@ class MainTab extends GetView<HomeController> {
             },
           );
         }),
+
+        // TODO Display income and expense summary
+
         // Obx(() {
         //   return AccountStats(
         //       width: width, height: height, fullName: controller.user.value?.fullName ?? '', netAmount: 4000.0);

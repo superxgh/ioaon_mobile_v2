@@ -10,6 +10,7 @@ import 'lang/lang.dart';
 import 'routes/routes.dart';
 import 'theme/theme.dart';
 
+// ? Main function form run
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DependencyInjection.init();
