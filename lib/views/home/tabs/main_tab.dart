@@ -3,7 +3,7 @@ import 'package:ioaon_mobile_v2/controllers/home/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 import 'package:ioaon_mobile_v2/views/home/main_contents/incom_expenses_summary.dart';
-import '../main_contents/account_summary.dart';
+import '../main_contents/balance_summary.dart';
 import '../main_contents/month_year_picker.dart';
 
 class MainTab extends GetView<HomeController> {
@@ -17,11 +17,12 @@ class MainTab extends GetView<HomeController> {
     var height = MediaQuery.of(context).size.height;
 
     return SingleChildScrollView(
+        // padding: EdgeInsets.all(5.0),
         child: Column(
       children: [
         // ? Display AAccountSummary
         Obx(() {
-          return AccountSummary(
+          return BalanceSummary(
               width: width,
               height: height,
               fullName: controller.user.value?.fullName ?? '',

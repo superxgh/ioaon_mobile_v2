@@ -3,21 +3,22 @@ import 'package:get/get.dart';
 import '../../../shared/utils/logging.dart';
 import '../../../shared/utils/string.dart';
 
-class AccountSummary extends StatelessWidget {
+class BalanceSummary extends StatelessWidget {
   final double height;
   final double width;
   final String fullName;
   final double netAmount;
-  const AccountSummary({
-    Key? key,
-    required this.fullName,
-    required this.netAmount,
-    required this.height,
-    required this.width}) : super(key: key);
+  const BalanceSummary(
+      {Key? key,
+      required this.fullName,
+      required this.netAmount,
+      required this.height,
+      required this.width})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final log = logger(AccountSummary);
+    final log = logger(BalanceSummary);
     log.i('netAmount = $netAmount');
     return Stack(
       children: <Widget>[
@@ -32,23 +33,23 @@ class AccountSummary extends StatelessWidget {
           right: 0,
           child: Container(
               width: double.infinity,
-              height: height * 0.28, //250,
+              height: height * 0.24, //250,
               decoration: BoxDecoration(
                 color: Colors.lightBlue[700], //Colors.indigo[400],
               )),
         ),
         Positioned(
-          top: width * 0.18, //70
+          top: width * 0.10, //70
           left: width * 0.07, //30,
           child: Text(
-            displayString(fullName),
-            style: TextStyle(
-                color: Colors.white, fontSize: width * 0.074 //30
-            ),
+            displayString(fullName + 'NNNNNNNNNN'),
+            style: TextStyle(color: Colors.white, fontSize: width * 0.074 //30
+                ),
           ),
         ),
         Positioned(
-          bottom: 0,
+          top: height * 0.12, //30,
+          bottom: 0.0,
           left: width * 0.07, // 30,
           right: width * 0.07, // 30,
           child: Container(
@@ -71,14 +72,12 @@ class AccountSummary extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                     left: width * 0.05,
-                    top: width * 0.04,
                     bottom: width * 0.02,
                   ),
                   child: Text(
                     "net_amount".tr,
                     style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: width * 0.05),
+                        color: Colors.grey[600], fontSize: width * 0.05),
                   ),
                 ),
                 Row(
@@ -89,15 +88,14 @@ class AccountSummary extends StatelessWidget {
                       padding: EdgeInsets.only(left: width * 0.05),
                       child: Container(
                         width: width * 0.6,
-
                         child: Text(
                           netAmount.toString(),
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            color: Colors
-                                .lightBlue[700], //Colors.indigo[400],
+                            color: Colors.lightBlue[700], //Colors.indigo[400],
                             fontWeight: FontWeight.bold,
-                            fontSize: _saldoTamanho(width, netAmount.toString()),
+                            fontSize:
+                                _saldoTamanho(width, netAmount.toString()),
                             //width * 0.1 //_saldoTamanho(saldoAtual)
                           ),
                         ),
@@ -118,8 +116,8 @@ class AccountSummary extends StatelessWidget {
                           width: width * 0.12,
                           height: width * 0.12, //65,
                           decoration: BoxDecoration(
-                              color: Colors
-                                  .lightBlue[700], //Colors.indigo[400],
+                              color:
+                                  Colors.lightBlue[700], //Colors.indigo[400],
                               borderRadius: BorderRadius.circular(50),
                               boxShadow: [
                                 BoxShadow(
@@ -156,7 +154,4 @@ class AccountSummary extends StatelessWidget {
       return width * 0.1;
     }
   }
-
-
-
 }

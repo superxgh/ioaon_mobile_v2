@@ -7,7 +7,6 @@ import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 import 'package:ioaon_mobile_v2/views/home/tabs/tabs.dart';
 
 class HomeScreen extends GetView<HomeController> {
-
   final log = logger(HomeScreen);
 
   @override
@@ -24,18 +23,20 @@ class HomeScreen extends GetView<HomeController> {
     log.i('_buildWidget()');
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.lightBlue[700],
         actions: [
-          // CircleAvatar(
-          //   backgroundImage: NetworkImage(dummyAvatarUrl),
-          //   radius: 24,
-          // ),
-          Text('MyProfile'),
-          SizedBox(width: 24)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundImage: AssetImage(
+                  'images/profiles/aaa.png'), //NetworkImage(dummyAvatarUrl),
+              radius: 20,
+            ),
+          ),
+          // Text('MyProfile'),
         ],
       ),
-      body: Center(
-        child: _buildContent(controller.currentTab.value),
-      ),
+      body: _buildContent(controller.currentTab.value),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           _buildNavigationBarItem(
