@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ioaon_mobile_v2/modules/home/home.dart';
+import 'package:ioaon_mobile_v2/controllers/home/home_controller.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
+import 'package:ioaon_mobile_v2/views/home/tabs/tabs.dart';
 
 class HomeScreen extends GetView<HomeController> {
 

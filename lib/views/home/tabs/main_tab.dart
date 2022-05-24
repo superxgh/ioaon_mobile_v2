@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ioaon_mobile_v2/modules/home/home.dart';
+import 'package:ioaon_mobile_v2/controllers/home/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 import '../main_contents/account_summary.dart';

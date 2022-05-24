@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ioaon_mobile_v2/controllers/auth/auth_controller.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
 import 'package:ioaon_mobile_v2/shared/utils/validator.dart';
-
-import 'auth_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   final log = logger(LoginScreen);

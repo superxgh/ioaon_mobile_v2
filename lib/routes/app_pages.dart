@@ -1,7 +1,7 @@
-import 'package:ioaon_mobile_v2/modules/auth/auth.dart';
-import 'package:ioaon_mobile_v2/modules/home/home.dart';
-import 'package:ioaon_mobile_v2/modules/me/cards/cards_screen.dart';
-import 'package:ioaon_mobile_v2/modules/modules.dart';
+import 'package:ioaon_mobile_v2/views/auth/auth.dart';
+import 'package:ioaon_mobile_v2/views/home/home.dart';
+import 'package:ioaon_mobile_v2/views/me/cards/cards_screen.dart';
+import 'package:ioaon_mobile_v2/views/views.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';

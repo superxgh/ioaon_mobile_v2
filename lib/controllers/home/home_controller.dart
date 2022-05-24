@@ -2,11 +2,11 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:ioaon_mobile_v2/api/api.dart';
 import 'package:ioaon_mobile_v2/models/response/user_response.dart';
-import 'package:ioaon_mobile_v2/modules/home/home.dart';
 import 'package:ioaon_mobile_v2/routes/app_pages.dart';
 import 'package:ioaon_mobile_v2/shared/shared.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
+import 'package:ioaon_mobile_v2/views/home/tabs/tabs.dart';
 
 class HomeController extends GetxController {
   final log = logger(HomeController);

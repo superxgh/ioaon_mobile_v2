@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import 'home_controller.dart';
+import 'package:ioaon_mobile_v2/controllers/home/home_controller.dart';
 
 class HomeBinding implements Bindings {
 

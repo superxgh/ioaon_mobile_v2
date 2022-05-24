@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
+import 'package:ioaon_mobile_v2/controllers/auth/auth_controller.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
-
-import 'auth_controller.dart';
 
 class AuthBinding implements Bindings {
   final log = logger(AuthBinding);
