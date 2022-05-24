@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ioaon_mobile_v2/api/api_repository.dart';
 import 'package:ioaon_mobile_v2/api/provider/user_api_provider.dart';
-import 'package:ioaon_mobile_v2/di.dart';
-import 'package:ioaon_mobile_v2/modules/home/home.dart';
+import 'package:ioaon_mobile_v2/controllers/home/home_controller.dart';
 import 'package:ioaon_mobile_v2/shared/constants/storage.dart';
 import 'package:ioaon_mobile_v2/shared/services/preference_service.dart';
 import 'package:ioaon_mobile_v2/shared/services/storage_service.dart';

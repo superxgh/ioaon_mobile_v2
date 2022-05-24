@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import '../../../shared/utils/logging.dart';
 import '../../../shared/utils/string.dart';
 
-class AccountStats extends StatelessWidget {
+class IncomExpensesSummary extends StatelessWidget {
   final double height;
   final double width;
   final String fullName;
   final double netAmount;
-  const AccountStats({
+  const IncomExpensesSummary({
     Key? key,
     required this.fullName,
     required this.netAmount,
@@ -17,7 +17,7 @@ class AccountStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = logger(AccountStats);
+    final log = logger(IncomExpensesSummary);
     log.i('netAmount = $netAmount');
     return Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),

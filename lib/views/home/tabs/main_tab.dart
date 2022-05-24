@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/controllers/home/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
+import 'package:ioaon_mobile_v2/views/home/main_contents/incom_expenses_summary.dart';
 import '../main_contents/account_summary.dart';
 import '../main_contents/month_year_picker.dart';
 
@@ -18,35 +19,43 @@ class MainTab extends GetView<HomeController> {
     return SingleChildScrollView(
         child: Column(
       children: [
+        // ? Display AAccountSummary
         Obx(() {
           return AccountSummary(
-              width: width, height: height, fullName: controller.user.value?.fullName ?? '', netAmount: 4000.0);
+              width: width,
+              height: height,
+              fullName: controller.user.value?.fullName ?? '',
+              netAmount: 4000.0);
         }),
+
+        // ? MonthAndYearSelector
         Obx(() {
           log.i('before return selectedDay = ${controller.selectedDay.value}');
           return (controller.selectedDay.value == null)
-            ? Text('Loading....')
-            : MonthAndYearSelector(
-            dateTime: controller.selectedDay.value!,
-            onConfirm: (date) {
-              controller.selectedDay.value = date;
-            },
-          );
+              ? Text('Loading....')
+              : MonthAndYearSelector(
+                  dateTime: controller.selectedDay.value!,
+                  onConfirm: (date) {
+                    controller.selectedDay.value = date;
+                  },
+                );
         }),
 
-        // TODO Display income and expense summary
+        // ? MonthAndYearSelector
+        Obx(() {
+          return (controller.selectedDay.value == null)
+              ? Text('Loading....')
+              : IncomExpensesSummary(
+                  width: width,
+                  height: height,
+                  fullName: controller.user.value?.fullName ?? '',
+                  netAmount: 2500.0);
+        }),
+
+        // TODO Display and create income and expenses list
+        _buildGridView()
       ],
     ));
-    /*
-    Scaffold(
-      body: Obx(
-        () => RefreshIndicator(
-          child: _buildGridView(),
-          onRefresh: () => controller.loadUsers(),
-        ),
-      ),
-    );
-    */
   }
 
   Widget _buildGridView() {
