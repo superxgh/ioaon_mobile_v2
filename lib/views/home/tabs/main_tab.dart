@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ioaon_mobile_v2/controllers/home/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:ioaon_mobile_v2/shared/utils/logging.dart';
+import 'package:ioaon_mobile_v2/views/home/main_contents/account_item_list.dart';
 import 'package:ioaon_mobile_v2/views/home/main_contents/incom_expenses_summary.dart';
 import '../main_contents/balance_summary.dart';
 import '../main_contents/month_year_picker.dart';
@@ -54,7 +55,11 @@ class MainTab extends GetView<HomeController> {
         }),
 
         // TODO Display and create income and expenses list
-        _buildGridView()
+        Obx(() => AccountItemList(
+              fullName: controller.user.value?.fullName ?? '',
+              height: height,
+              width: width,
+            ))
       ],
     ));
   }
